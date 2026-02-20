@@ -1,0 +1,92 @@
+package tugas;
+import java.util.InputMismatchException; 
+import java.util.Scanner; 
+ 
+public class Tugas3{ 
+ 
+    public static void main(String[] args) { 
+        Scanner scanner = new Scanner(System.in); 
+ 
+        // Array gaji berdasarkan golongan 
+        int[] gajiGolongan = {5000000, 6500000, 9500000}; 
+ 
+        // Array persenan lembur 
+        int[] persenlembur = {30, 32, 34, 36, 38}; 
+ 
+        char golongan = ' '; 
+        int jamLembur = 0; 
+ 
+        // Input golongan dengan validasi 
+        while (true) { 
+            try { 
+                System.out.print("Masukan Golongan Karyawan (A/B/C): "); 
+                String input = scanner.next().toUpperCase(); 
+                if (input.length() == 1 && (input.equals("A") || input.equals("B") || 
+input.equals("C"))) { 
+                    golongan = input.charAt(0); 
+                    break; 
+                } else { 
+                    System.out.println("Input salah! Masukkan hanya huruf A, B, atau C."); 
+                } 
+            } catch (Exception e) { 
+                System.out.println("Terjadi kesalahan input. Coba lagi."); 
+                scanner.next(); // bersihkan buffer 
+            } 
+        } 
+ 
+        // Input jam lembur dengan validasi 
+        while (true) { 
+            try { 
+                System.out.print("Masukan Jumlah Jam Lembur: "); 
+                jamLembur = scanner.nextInt(); 
+                if (jamLembur < 0) { 
+                    System.out.println("Jam lembur tidak boleh negatif."); 
+                } else { 
+                    break; 
+                } 
+            } catch (InputMismatchException e) { 
+                System.out.println("Harus berupa angka! Coba lagi."); 
+                scanner.next(); // bersihkan buffer 
+            } 
+        } 
+ 
+        // Menentukan gaji pokok berdasarkan golongan 
+        int gajiPokok = 0; 
+        if (golongan == 'A') { 
+            gajiPokok = gajiGolongan[0]; 
+        } else if (golongan == 'B') { 
+            gajiPokok = gajiGolongan[1]; 
+        } else if (golongan == 'C') { 
+            gajiPokok = gajiGolongan[2]; 
+        } 
+ 
+        // Menghitung gaji lembur 
+        int gajiLembur = 0; 
+        if (jamLembur > 0) { 
+            int persen = 0; 
+            if (jamLembur == 1) { 
+                persen = persenlembur[0]; 
+            } else if (jamLembur == 2) { 
+                persen = persenlembur[1]; 
+            } else if (jamLembur == 3) { 
+                persen = persenlembur[2]; 
+            } else if (jamLembur == 4) { 
+                persen = persenlembur[3]; 
+            } else if (jamLembur >= 5) { 
+                persen = persenlembur[4]; 
+            } 
+            gajiLembur = (gajiPokok * persen) / 100; 
+        } 
+ 
+        // Menghitung total penghasilan 
+        int totalPenghasilan = gajiPokok + gajiLembur; 
+ 
+        // Tampilkan hasil 
+        System.out.println("\n=== Hasil ==="); 
+        System.out.println("Gaji Pokok         : Rp" + gajiPokok); 
+        System.out.println("Gaji Lembur        : Rp" + gajiLembur); 
+        System.out.println("Total Penghasilan  : Rp" + totalPenghasilan); 
+ 
+        scanner.close(); 
+    } 
+}

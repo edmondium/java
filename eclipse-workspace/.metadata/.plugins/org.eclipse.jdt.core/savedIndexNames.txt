@@ -1,0 +1,8 @@
+INDEX VERSION 1.134+/home/edmondium/eclipse-workspace/.metadata/.plugins/org.eclipse.jdt.core
+2567467902.index
+4172124323.index
+1526773741.index
+379842959.index
+2410324021.index
+4026115876.index
+1865797976.index

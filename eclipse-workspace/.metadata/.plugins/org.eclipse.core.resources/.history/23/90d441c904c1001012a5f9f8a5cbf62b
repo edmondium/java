@@ -1,0 +1,53 @@
+package tugas;
+import java.util.Scanner; 
+
+public class tugas2{ 
+    public static void main(String[] args) { 
+        Scanner input = new Scanner(System.in); 
+        String golongan; 
+        int jam; 
+        double gaji = 0; 
+ 
+        while (true) { 
+            System.out.print("Golongan (A/B/C): "); 
+            golongan = input.next().toUpperCase(); 
+ 
+            // Validasi golongan 
+            if (golongan.equals("A")) { 
+                gaji = 5000000; 
+            } else if (golongan.equals("B")) { 
+                gaji = 6500000; 
+            } else if (golongan.equals("C")) { 
+                gaji = 9500000; 
+            } else { 
+                System.out.println("Golongan tidak valid. Coba lagi.\n"); 
+                continue; // Ulangi input jika golongan tidak valid 
+            } 
+ 
+            // Input jam lembur 
+            System.out.print("Jam lembur: "); 
+            jam = input.nextInt(); 
+ 
+            // Validasi jam lembur 
+            if (jam < 0) { 
+                System.out.println("Jam lembur tidak boleh negatif. Coba lagi.\n"); 
+                continue; // Ulangi input jika jam lembur tidak valid 
+            } 
+ 
+            // Hitung persen lembur 
+            double persen = 0; 
+            if (jam == 1) persen = 0.30; 
+            else if (jam == 2) persen = 0.32; 
+            else if (jam == 3) persen = 0.34; 
+            else if (jam == 4) persen = 0.36; 
+            else if (jam >= 5) persen = 0.38; 
+ 
+            // Hitung total penghasilan 
+            double total = gaji + (gaji * persen); 
+            System.out.printf("Total Penghasilan: Rp %,d%n", (int) total); // Format output dengan koma 
+            break; // Keluar dari loop jika sudah selesai 
+        } 
+ 
+        input.close(); 
+    } 
+}

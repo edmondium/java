@@ -1,0 +1,21 @@
+package tugas;
+import java.util.*;
+public class LoopingFor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		for (; ; ) {
+			System.out.print("Apakah ingin menghitung lagi? (y/n): ");
+			String lanjut = input.nextLine();
+			if (!lanjut.equalsIgnoreCase("y")) {
+				break;
+			}
+			System.out.println();
+			input.close();
+		}
+		System.out.println("\nTerima kasih. Program selesai.");
+		input.close();
+	}
+
+}

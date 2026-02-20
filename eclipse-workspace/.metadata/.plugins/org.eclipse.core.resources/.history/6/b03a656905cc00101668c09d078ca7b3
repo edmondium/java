@@ -1,0 +1,46 @@
+package tugas;
+import java.util.*;
+public class ArrayLembur{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int[] persenLembur = {30, 32, 34, 36, 38};
+
+        for (; ; ) {
+            System.out.print("Masukkan jumlah jam lembur: ");
+            String jamInput = input.next();
+
+            int jamLembur = 0;
+            try {
+                jamLembur = Integer.parseInt(jamInput);
+                if (jamLembur < 0) {
+                    System.out.println("Jam lembur tidak boleh negatif!\n");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input jam lembur harus berupa angka!\n");
+                continue;
+            }
+
+            int persen = 0;
+            if (jamLembur >= 5) {
+                persen = persenLembur[4];
+            } else if (jamLembur >= 1 && jamLembur <= 4) {
+                persen = persenLembur[jamLembur - 1];
+            }
+            // double gajiLembur = (persenLembur/100) * gajiPokok;
+            
+            
+            
+            System.out.print("\nApakah ingin menghitung lagi? (y/n): ");
+            String lanjut = input.next();
+            if (!lanjut.equalsIgnoreCase("y")) {
+                break;
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("\nTerima kasih. Program selesai.");
+    }
+}
